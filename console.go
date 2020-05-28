@@ -13,32 +13,34 @@ const (
 	textWhite
 )
 
-func Black(str string) string {
-	return textColor(textBlack, str)
-}
+type Console struct {}
 
-func Red(str string) string {
-	return textColor(textRed, str)
-}
-func Yellow(str string) string {
-	return textColor(textYellow, str)
-}
-func Green(str string) string {
-	return textColor(textGreen, str)
-}
-func Cyan(str string) string {
-	return textColor(textCyan, str)
-}
-func Blue(str string) string {
-	return textColor(textBlue, str)
-}
-func Purple(str string) string {
-	return textColor(textPurple, str)
-}
-func White(str string) string {
-	return textColor(textWhite, str)
-}
-
-func textColor(color int, str string) string {
+func (this *Console) textColor(color int, str string) string {
 	return fmt.Sprintf("\x1b[0;%dm%s\x1b[0m", color, str)
+}
+
+func (this *Console) Black(str string) string {
+	return this.textColor(textBlack, str)
+}
+
+func (this *Console) Red(str string) string {
+	return this.textColor(textRed, str)
+}
+func (this *Console) Yellow(str string) string {
+	return this.textColor(textYellow, str)
+}
+func (this *Console) Green(str string) string {
+	return this.textColor(textGreen, str)
+}
+func (this *Console) Cyan(str string) string {
+	return this.textColor(textCyan, str)
+}
+func (this *Console) Blue(str string) string {
+	return this.textColor(textBlue, str)
+}
+func (this *Console) Purple(str string) string {
+	return this.textColor(textPurple, str)
+}
+func (this *Console) White(str string) string {
+	return this.textColor(textWhite, str)
 }
