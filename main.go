@@ -26,11 +26,14 @@ func main() {
 	flag.BoolVar(&help, "h", false, "查看帮助信息")
 	flag.StringVar(&nginx, "nginx", configure.NGINX, "配置 nginx 可执行文件位置")
 	flag.Parse()
-	
 	configure.VHOST = vhost
 	configure.NGINX = nginx
 	if !mutual.isFileExist(configure.VHOST) {
 		fmt.Println("虚拟站点配置目录找不到", console.Yellow("[-v vhost_dir]"))
+		os.Exit(2)
+	}
+	if !mutual.isFileExist(configure.NGINX) {
+		fmt.Println(console.Red("nginx运行文件找不到"))
 		os.Exit(2)
 	}
 	if help {
